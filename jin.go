@@ -1,6 +1,7 @@
 package jin
 
 import (
+	"jin/log"
 	"net/http"
 )
 
@@ -29,6 +30,7 @@ func (engine *Engine) POST(pattern string, handler HandlerFunc) {
 }
 
 func (engine *Engine) Run(addr string) (err error) {
+	log.Infof("Listening and serving HTTP on http://127.0.0.1%s/", addr)
 	return http.ListenAndServe(addr, engine)
 }
 
