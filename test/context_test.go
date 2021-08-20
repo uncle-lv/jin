@@ -9,9 +9,11 @@ import (
 func TestContext(t *testing.T) {
 	r := jin.New()
 
-	r.GET("/", func(c *jin.Context) {
-		c.HTML(http.StatusOK, "<h1>Welcome!</h1>")
-	})
+	/*
+		r.GET("/", func(c *jin.Context) {
+			c.HTML(http.StatusOK, "<h1>Welcome!</h1>")
+		})
+	*/
 
 	r.GET("/hello", func(c *jin.Context) {
 		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
