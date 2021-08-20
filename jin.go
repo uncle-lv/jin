@@ -3,6 +3,7 @@ package jin
 import (
 	"jin/log"
 	"net/http"
+	"strings"
 )
 
 // HandlerFunc is the handler of HTTP request
@@ -10,9 +11,10 @@ type HandlerFunc func(*Context)
 
 type (
 	RouterGroup struct {
-		prefix string       // The prefix of the route
-		parent *RouterGroup // support router group nesting
-		engine *Engine      // all the groups share one engine instance
+		prefix      string       // The prefix of the route
+		parent      *RouterGroup // support router group nesting
+		engine      *Engine      // all the groups share one engine instance
+		middlewares []HandlerFunc
 	}
 
 	// Engine implements ServeHTTP
@@ -60,7 +62,18 @@ func (engine *Engine) Run(addr string) (err error) {
 	return http.ListenAndServe(addr, engine)
 }
 
+func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
+	group.middlewares = append(group.middlewares, middlewares...)
+}
+
 func (engine *Engine) ServeHTTP(w http.ResponseWriter, req *http.Request) {
+	var middlewares []HandlerFunc
+	for _, group := range engine.groups {
+		if strings.HasPrefix(req.URL.Path, group.prefix) {
+			middlewares = append(middlewares, group.middlewares...)
+		}
+	}
 	c := newContext(w, req)
+	c.handlers = middlewares
 	engine.router.handle(c)
 }
