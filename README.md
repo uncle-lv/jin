@@ -20,6 +20,7 @@ If this project is helpful for you, please star the project, thank you!!!
 - Panic Recover
 - Set and get a cookie
 - Upload single file
+- Upload multiple files
 - Redirects
 - A simple logger
 
