@@ -32,6 +32,9 @@ func parsePattern(pattern string) []string {
 }
 
 func (r *router) addRoute(method string, pattern string, handler HandlerFunc) {
+	assertPath(pattern[0] == '/', "Path must begin with '/'")
+	assertPath(handler != nil, "There must be a handler")
+
 	parts := parsePattern(pattern)
 
 	key := method + "-" + pattern

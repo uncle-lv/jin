@@ -68,9 +68,13 @@ func (group *RouterGroup) POST(pattern string, handler HandlerFunc) {
 	group.addRoute(http.MethodPost, pattern, handler)
 }
 
-func (engine *Engine) Run(addr string) (err error) {
-	log.Infof("Listening and serving HTTP on http://127.0.0.1%s/", addr)
-	return http.ListenAndServe(addr, engine)
+func (engine *Engine) Run(addr ...string) (err error) {
+	defer func() { log.Error(err) }()
+
+	address := resolveAddr(addr)
+	log.Infof("Listening and serving HTTP on http://127.0.0.1%s/", address)
+	err = http.ListenAndServe(address, engine)
+	return
 }
 
 func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
