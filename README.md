@@ -1,12 +1,6 @@
 # jin
 
- ![license](https://img.shields.io/github/license/uncle-lv/jin)
-
-![stars](https://img.shields.io/github/stars/uncle-lv/jin) 
-
- ![issues](https://img.shields.io/github/issues/uncle-lv/jin)
-
- ![forks](https://img.shields.io/github/forks/uncle-lv/jin)
+![license](https://img.shields.io/github/license/uncle-lv/jin)![stars](https://img.shields.io/github/stars/uncle-lv/jin)  ![issues](https://img.shields.io/github/issues/uncle-lv/jin) ![forks](https://img.shields.io/github/forks/uncle-lv/jin)
 
 ## About
 

@@ -61,6 +61,25 @@ func TestUploadSingleFile(t *testing.T) {
 	r.Run(":8080")
 }
 
+func TestUploadMultipleFiles(t *testing.T) {
+	const dst string = "../static/file/"
+
+	r := jin.Default()
+	r.POST("/upload", func(c *jin.Context) {
+		log.Info("handle...")
+		form, _ := c.MultipartForm()
+		files := form.File["upload[]"]
+
+		for _, file := range files {
+			log.Infof("file name: ", file.Filename)
+			c.SaveUploadFile(file, dst, file.Filename)
+		}
+		c.String(http.StatusOK, "Upload succeed!")
+	})
+
+	r.Run(":8080")
+}
+
 func TestRedirect(t *testing.T) {
 	r := jin.Default()
 

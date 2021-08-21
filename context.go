@@ -138,6 +138,11 @@ func (c *Context) FormFile(name string) (*multipart.FileHeader, error) {
 	return fh, err
 }
 
+func (c *Context) MultipartForm() (*multipart.Form, error) {
+	err := c.Req.ParseMultipartForm(c.engine.MaxMultipartMemory)
+	return c.Req.MultipartForm, err
+}
+
 func (c *Context) SaveUploadFile(file *multipart.FileHeader, dst string, FileName string) error {
 	src, err := file.Open()
 	if err != nil {
