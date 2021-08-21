@@ -3,6 +3,7 @@ package test
 import (
 	"jin"
 	"jin/log"
+	"net/http"
 	"testing"
 )
 
@@ -22,6 +23,18 @@ func TestMiddleware(t *testing.T) {
 			})
 		}
 	*/
+
+	r.Run(":8080")
+}
+
+func TestDefaultLogger(t *testing.T) {
+	r := jin.New()
+
+	r.Use(jin.DefaultLogger())
+
+	r.GET("/", func(c *jin.Context) {
+		c.String(http.StatusOK, "Hello")
+	})
 
 	r.Run(":8080")
 }
