@@ -46,3 +46,17 @@ func TestSetCookie(t *testing.T) {
 
 	r.Run(":8080")
 }
+
+func TestUploadSingleFile(t *testing.T) {
+	const dst string = "../static/file/"
+
+	r := jin.Default()
+	r.POST("/upload", func(c *jin.Context) {
+		file, _ := c.FormFile("file")
+		log.Infof("file name: %s", file.Filename)
+		c.SaveUploadFile(file, dst, file.Filename)
+		c.String(http.StatusOK, "Upload succeed!")
+	})
+
+	r.Run(":8080")
+}

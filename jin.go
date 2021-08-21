@@ -22,10 +22,11 @@ type (
 	// Engine implements ServeHTTP
 	Engine struct {
 		*RouterGroup
-		router        *router
-		groups        []*RouterGroup
-		htmlTemplates *template.Template
-		funcMap       template.FuncMap
+		router             *router
+		groups             []*RouterGroup
+		htmlTemplates      *template.Template
+		funcMap            template.FuncMap
+		MaxMultipartMemory int64
 	}
 )
 

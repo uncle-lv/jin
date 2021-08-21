@@ -3,8 +3,11 @@ package jin
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"mime/multipart"
 	"net/http"
 	"net/url"
+	"os"
 )
 
 type H map[string]interface{}
@@ -119,4 +122,35 @@ func (c *Context) SetCookie(name, value string, maxAge int, path, domain string,
 		Secure:   secure,
 		HttpOnly: httpOnly,
 	})
+}
+
+func (c *Context) FormFile(name string) (*multipart.FileHeader, error) {
+	if c.Req.MultipartForm == nil {
+		if err := c.Req.ParseMultipartForm(c.engine.MaxMultipartMemory); err != nil {
+			return nil, err
+		}
+	}
+	f, fh, err := c.Req.FormFile(name)
+	if err != nil {
+		return nil, err
+	}
+	f.Close()
+	return fh, err
+}
+
+func (c *Context) SaveUploadFile(file *multipart.FileHeader, dst string, FileName string) error {
+	src, err := file.Open()
+	if err != nil {
+		return err
+	}
+	defer src.Close()
+
+	out, err := os.Create(dst + FileName)
+	if err != nil {
+		return err
+	}
+	defer out.Close()
+
+	_, err = io.Copy(out, src)
+	return err
 }
