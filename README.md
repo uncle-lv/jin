@@ -1,6 +1,6 @@
 # jin
 
-![license](https://img.shields.io/github/license/uncle-lv/jin)![stars](https://img.shields.io/github/stars/uncle-lv/jin)  ![issues](https://img.shields.io/github/issues/uncle-lv/jin) ![forks](https://img.shields.io/github/forks/uncle-lv/jin)
+![license](https://img.shields.io/github/license/uncle-lv/jin)  ![stars](https://img.shields.io/github/stars/uncle-lv/jin)   ![issues](https://img.shields.io/github/issues/uncle-lv/jin) ![forks](https://img.shields.io/github/forks/uncle-lv/jin) 
 
 ## About
 
@@ -12,6 +12,7 @@ If this project is helpful for you, please star the project, thank you!!!
 
 - Support GET, POST
 - Querystring parameters
+- JSON, XML rendering
 - Multipart/Urlencoded Form
 - Get the parameters in Path
 - Grouping routes

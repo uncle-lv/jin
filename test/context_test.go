@@ -30,6 +30,19 @@ func TestContext(t *testing.T) {
 	r.Run(":8080")
 }
 
+func TestXML(t *testing.T) {
+	r := jin.New()
+
+	r.GET("/xml", func(c *jin.Context) {
+		c.JSON(http.StatusOK, jin.H{
+			"message": "hey",
+			"status":  http.StatusOK,
+		})
+	})
+
+	r.Run(":8080")
+}
+
 func TestSetCookie(t *testing.T) {
 	r := jin.Default()
 
