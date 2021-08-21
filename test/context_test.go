@@ -60,3 +60,17 @@ func TestUploadSingleFile(t *testing.T) {
 
 	r.Run(":8080")
 }
+
+func TestRedirect(t *testing.T) {
+	r := jin.Default()
+
+	r.GET("/", func(c *jin.Context) {
+		c.Redirect(http.StatusTemporaryRedirect, "/index")
+	})
+
+	r.GET("/index", func(c *jin.Context) {
+		c.String(http.StatusOK, "Welcome to Index Page!")
+	})
+
+	r.Run(":8080")
+}
