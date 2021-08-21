@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 )
 
 type H map[string]interface{}
@@ -18,6 +19,7 @@ type Context struct {
 	handlers   []HandlerFunc
 	index      int
 	engine     *Engine
+	sameSite   http.SameSite
 }
 
 func newContext(w http.ResponseWriter, req *http.Request) *Context {
@@ -91,4 +93,30 @@ func (c *Context) Next() {
 	for ; c.index < s; c.index++ {
 		c.handlers[c.index](c)
 	}
+}
+
+func (c *Context) Cookie(name string) (string, error) {
+	cookie, err := c.Req.Cookie(name)
+	if err != nil {
+		return "", err
+	}
+	value, _ := url.QueryUnescape(cookie.Value)
+	return value, nil
+}
+
+func (c *Context) SetCookie(name, value string, maxAge int, path, domain string, secure, httpOnly bool) {
+	if path == "" {
+		path = "/"
+	}
+
+	http.SetCookie(c.Writer, &http.Cookie{
+		Name:     name,
+		Value:    url.QueryEscape(value),
+		MaxAge:   maxAge,
+		Path:     path,
+		Domain:   domain,
+		SameSite: c.sameSite,
+		Secure:   secure,
+		HttpOnly: httpOnly,
+	})
 }

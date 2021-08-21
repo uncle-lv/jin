@@ -2,6 +2,7 @@ package test
 
 import (
 	"jin"
+	"jin/log"
 	"net/http"
 	"testing"
 )
@@ -24,6 +25,23 @@ func TestContext(t *testing.T) {
 			"username": c.PostForm("username"),
 			"password": c.PostForm("password"),
 		})
+	})
+
+	r.Run(":8080")
+}
+
+func TestSetCookie(t *testing.T) {
+	r := jin.Default()
+
+	r.GET("/cookie", func(c *jin.Context) {
+		cookie, err := c.Cookie("jin_cookie")
+
+		if err != nil {
+			cookie = "NotSet"
+			c.SetCookie("jin_cookie", "test", 3600, "/", "localhost", false, true)
+		}
+
+		log.Infof("Cookie value: %s\n", cookie)
 	})
 
 	r.Run(":8080")
