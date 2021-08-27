@@ -68,6 +68,10 @@ func (group *RouterGroup) POST(pattern string, handler HandlerFunc) {
 	group.addRoute(http.MethodPost, pattern, handler)
 }
 
+func (group *RouterGroup) HEAD(pattern string, handler HandlerFunc) {
+	group.addRoute(http.MethodHead, pattern, handler)
+}
+
 func (engine *Engine) Run(addr ...string) (err error) {
 	defer func() { log.Error(err) }()
 
