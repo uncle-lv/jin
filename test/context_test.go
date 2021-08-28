@@ -106,3 +106,13 @@ func TestRedirect(t *testing.T) {
 
 	r.Run(":8080")
 }
+
+func TestHEAD(t *testing.T) {
+	r := jin.Default()
+
+	r.HEAD("/", func(c *jin.Context) {
+		c.String(http.StatusOK, "Hello World!")
+	})
+
+	r.Run(":8080")
+}
