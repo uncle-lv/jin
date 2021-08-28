@@ -116,3 +116,22 @@ func TestHEAD(t *testing.T) {
 
 	r.Run(":8080")
 }
+
+func TestPUT(t *testing.T) {
+	const dst string = "../static/file/"
+
+	r := jin.Default()
+
+	r.PUT("/", func(c *jin.Context) {
+		file, _ := c.FormFile("file")
+		log.Infof("file name: %s", file.Filename)
+		if jin.Exists(dst + file.Filename) {
+			c.String(http.StatusOK, "Upload succeed!")
+		} else {
+			c.SaveUploadFile(file, dst, file.Filename)
+			c.String(http.StatusCreated, "Upload succeed!")
+		}
+	})
+
+	r.Run(":8080")
+}

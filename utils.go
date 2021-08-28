@@ -39,3 +39,8 @@ func resolveHttpCode(httpCode []int) int {
 		panic("too many parameters")
 	}
 }
+
+func Exists(path string) bool {
+	_, err := os.Stat(path)
+	return err == nil || os.IsExist(err)
+}
