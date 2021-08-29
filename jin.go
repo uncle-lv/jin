@@ -76,6 +76,10 @@ func (group *RouterGroup) PUT(pattern string, handler HandlerFunc) {
 	group.addRoute(http.MethodPut, pattern, handler)
 }
 
+func (group *RouterGroup) DELETE(pattern string, handler HandlerFunc) {
+	group.addRoute(http.MethodDelete, pattern, handler)
+}
+
 func (engine *Engine) Run(addr ...string) (err error) {
 	defer func() { log.Error(err) }()
 

@@ -4,6 +4,7 @@ import (
 	"jin"
 	"jin/log"
 	"net/http"
+	"os"
 	"testing"
 )
 
@@ -130,6 +131,29 @@ func TestPUT(t *testing.T) {
 		} else {
 			c.SaveUploadFile(file, dst, file.Filename)
 			c.String(http.StatusCreated, "Upload succeed!")
+		}
+	})
+
+	r.Run(":8080")
+}
+
+func TestDELETE(t *testing.T) {
+	const dst string = "../static/file/"
+
+	r := jin.Default()
+
+	r.DELETE("/deleteFile", func(c *jin.Context) {
+		fileName := c.PostForm("filename")
+		log.Infof("file name: %s", fileName)
+		if !jin.Exists(dst + fileName) {
+			c.String(http.StatusAccepted, "Delete succeed!")
+		} else {
+			err := os.Remove(dst + fileName)
+			if err != nil {
+				c.String(http.StatusInternalServerError, "Internal Server Error")
+				return
+			}
+			c.String(http.StatusOK, "Delete succeed!")
 		}
 	})
 
