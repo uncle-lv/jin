@@ -183,3 +183,13 @@ func TestPATCH(t *testing.T) {
 
 	r.Run(":8080")
 }
+
+func TestOPTIONS(t *testing.T) {
+	r := jin.Default()
+
+	r.OPTIONS("/options", func(c *jin.Context) {
+		c.SetHeader("Allow", jin.ALLOW_METHOD)
+	})
+
+	r.Run(":8080")
+}

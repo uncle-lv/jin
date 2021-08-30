@@ -84,6 +84,10 @@ func (group *RouterGroup) PATCH(pattern string, handler HandlerFunc) {
 	group.addRoute(http.MethodPatch, pattern, handler)
 }
 
+func (group *RouterGroup) OPTIONS(pattern string, handler HandlerFunc) {
+	group.addRoute(http.MethodOptions, pattern, handler)
+}
+
 func (engine *Engine) Run(addr ...string) (err error) {
 	defer func() { log.Error(err) }()
 
