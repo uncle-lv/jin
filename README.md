@@ -10,7 +10,7 @@ If this project is helpful for you, please star the project, thank you!!!
 
 ## Functions
 
-- Support GET, POST
+- Support GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS
 - Querystring parameters
 - JSON, XML rendering
 - Multipart/Urlencoded Form
