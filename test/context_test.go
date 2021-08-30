@@ -146,7 +146,7 @@ func TestDELETE(t *testing.T) {
 		fileName := c.PostForm("filename")
 		log.Infof("file name: %s", fileName)
 		if !jin.Exists(dst + fileName) {
-			c.String(http.StatusAccepted, "Delete succeed!")
+			c.String(http.StatusNotFound, "File don't exist!")
 		} else {
 			err := os.Remove(dst + fileName)
 			if err != nil {
@@ -154,6 +154,30 @@ func TestDELETE(t *testing.T) {
 				return
 			}
 			c.String(http.StatusOK, "Delete succeed!")
+		}
+	})
+
+	r.Run(":8080")
+}
+
+func TestPATCH(t *testing.T) {
+	const dst string = "../static/file/"
+
+	r := jin.Default()
+
+	r.PATCH("/rename", func(c *jin.Context) {
+		fileName := c.PostForm("filename")
+		newName := c.PostForm("newName")
+		log.Infof("file name: %s", fileName)
+		if !jin.Exists(dst + fileName) {
+			c.String(http.StatusNotFound, "File don't exist!")
+		} else {
+			err := os.Rename(dst+fileName, newName)
+			if err != nil {
+				c.String(http.StatusInternalServerError, "Internal Server Error")
+				return
+			}
+			c.String(http.StatusOK, "Rename succeed!")
 		}
 	})
 
