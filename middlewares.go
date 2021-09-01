@@ -1,12 +1,44 @@
 package jin
 
 import (
+	"fmt"
 	"jin/log"
+	"net/http"
+	"runtime"
+	"strings"
 )
+
+func trace(message string) string {
+	var pcs [32]uintptr
+	n := runtime.Callers(3, pcs[:])
+
+	var str strings.Builder
+	str.WriteString(message + "\nTraceback:")
+	for _, pc := range pcs[:n] {
+		fn := runtime.FuncForPC(pc)
+		file, line := fn.FileLine(pc)
+		str.WriteString(fmt.Sprintf("\n\t%s:%d", file, line))
+	}
+	return str.String()
+}
+
+func Recovery() HandlerFunc {
+	return func(context *Context) {
+		defer func() {
+			if err := recover(); err != nil {
+				message := fmt.Sprintf("%s", err)
+				log.Errorf("%s\n\n", trace(message))
+				context.Fail(http.StatusInternalServerError, "Internal Server Error")
+			}
+		}()
+
+		context.Next()
+	}
+}
 
 func DefaultLogger() HandlerFunc {
 	return func(context *Context) {
 		context.Next()
-		log.Infof("[%d] - %s", context.StatusCode, context.Req.RequestURI)
+		log.Infof(" %s - [%d] - %s", context.Req.Method, context.StatusCode, context.Req.RequestURI)
 	}
 }
