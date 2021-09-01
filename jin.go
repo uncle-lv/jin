@@ -11,6 +11,20 @@ import (
 // HandlerFunc is the handler of HTTP request
 type HandlerFunc func(*Context)
 
+type IRoutes interface {
+	Use(...HandlerFunc)
+
+	GET(string, HandlerFunc)
+	POST(string, HandlerFunc)
+	HEAD(string, HandlerFunc)
+	PUT(string, HandlerFunc)
+	DELETE(string, HandlerFunc)
+	PATCH(string, HandlerFunc)
+	OPTIONS(string, HandlerFunc)
+
+	Static(string, string)
+}
+
 type (
 	RouterGroup struct {
 		prefix      string       // The prefix of the route
