@@ -2,8 +2,6 @@
 
 ![license](https://img.shields.io/github/license/uncle-lv/jin)  ![stars](https://img.shields.io/github/stars/uncle-lv/jin)   ![issues](https://img.shields.io/github/issues/uncle-lv/jin) ![forks](https://img.shields.io/github/forks/uncle-lv/jin) 
 
-## About
-
 The **jin** is a simplified version of the gin web framework that can help you quickly understand the core principles of a web framework.
 
 If this project is helpful for you, please star the project, thank you!!!
@@ -24,6 +22,12 @@ If this project is helpful for you, please star the project, thank you!!!
 - Upload multiple files
 - Redirects
 - A simple logger
+
+## Diagrams
+
+### Class Diagram
+
+![class diagram](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/class_diagram.4nq0xbzu2cu0.svg)
 
 ## Usage
 
