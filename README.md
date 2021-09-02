@@ -23,12 +23,6 @@ If this project is helpful for you, please star the project, thank you!!!
 - Redirects
 - A simple logger
 
-## Diagrams
-
-### Class Diagram
-
-![class diagram](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/class_diagram.4nq0xbzu2cu0.svg)
-
 ## Usage
 
 **jin** is built step by step, and I have used git tag to manage every milestone version. You can view all important version by typing the command `git tag`, and get the version you want by typing the command `git checkout <tagname>`. You can view more details by checking commit logs.
@@ -47,6 +41,16 @@ step7-panic-recovery
 
 $ git checkout step1-a-simple-framework
 ```
+
+## Diagrams
+
+### Class Diagram
+
+![class diagram](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/class_diagram.4nq0xbzu2cu0.svg)
+
+### Request-handling process
+
+![request-handing process](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/request-handling process.1ijom29ygrc0.svg)
 
 ## Contributions
 
