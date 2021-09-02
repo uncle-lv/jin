@@ -50,7 +50,7 @@ $ git checkout step1-a-simple-framework
 
 ### Request-handling process
 
-![request-handing process](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/request-handling process.1ijom29ygrc0.svg)
+![request-handing process](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/request-handling_process.6uv2xuz3ti00.svg)
 
 ## Contributions
 
