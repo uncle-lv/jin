@@ -1,6 +1,6 @@
 # jin
 
-![license](https://img.shields.io/github/license/uncle-lv/jin)  ![stars](https://img.shields.io/github/stars/uncle-lv/jin)   ![issues](https://img.shields.io/github/issues/uncle-lv/jin) ![forks](https://img.shields.io/github/forks/uncle-lv/jin) 
+![license](https://img.shields.io/github/license/uncle-lv/jin)  ![stars](https://img.shields.io/github/stars/uncle-lv/jin)   ![issues](https://img.shields.io/github/issues/uncle-lv/jin)  ![forks](https://img.shields.io/github/forks/uncle-lv/jin)  ![go version](https://img.shields.io/github/go-mod/go-version/uncle-lv/jin?color=%23007d9c)
 
 The **jin** is a simplified version of the gin web framework that can help you quickly understand the core principles of a web framework.
 
