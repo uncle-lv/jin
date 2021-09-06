@@ -54,7 +54,7 @@ $ git checkout step1-a-simple-framework
 
 ## Contributions
 
-Any contributions you make are greatly appreciated.
+Any contribution you make are greatly appreciated.
 
 ## Lisence
 
