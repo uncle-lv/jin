@@ -11,9 +11,9 @@ import (
 var (
 	multiWriter = io.MultiWriter(os.Stdout)
 
-	errorLog = log.New(multiWriter, "[error] ", log.LstdFlags|log.Lshortfile)
-	warnLog  = log.New(multiWriter, "[warning] ", log.LstdFlags|log.Lshortfile)
-	infoLog  = log.New(multiWriter, "[info] ", log.LstdFlags|log.Lshortfile)
+	errorLog = log.New(multiWriter, "[ERROR] ", log.LstdFlags|log.Lshortfile)
+	warnLog  = log.New(multiWriter, "[WARNING] ", log.LstdFlags|log.Lshortfile)
+	infoLog  = log.New(multiWriter, "[INFO] ", log.LstdFlags|log.Lshortfile)
 	loggers  = []*log.Logger{errorLog, warnLog, infoLog}
 
 	mu sync.Mutex

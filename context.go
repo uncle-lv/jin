@@ -96,7 +96,7 @@ func (c *Context) Fail(code int, err string) {
 }
 
 func (c *Context) Param(key string) string {
-	value, _ := c.Params[key]
+	value := c.Params[key]
 	return value
 }
 
@@ -135,7 +135,7 @@ func (c *Context) SetCookie(name, value string, maxAge int, path, domain string,
 }
 
 func (c *Context) FormFile(name string) (*multipart.FileHeader, error) {
-	if c.Req.MultipartForm == nil {
+	if nil == c.Req.MultipartForm {
 		if err := c.Req.ParseMultipartForm(c.engine.MaxMultipartMemory); err != nil {
 			return nil, err
 		}

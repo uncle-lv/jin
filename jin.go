@@ -157,6 +157,6 @@ func (engine *Engine) LoadHTMLGlob(pattern string) {
 }
 
 func (c *Context) Redirect(code int, location string) {
-	log.Infof("\033[33m[%d]\033[0m  redirect %s to %s", code, c.Req.URL, location)
+	log.Infof("[%d] redirect %s to %s", code, c.Req.URL, location)
 	http.Redirect(c.Writer, c.Req, location, code)
 }

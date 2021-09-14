@@ -2,7 +2,6 @@ package jin
 
 import (
 	"jin/log"
-	"net/http"
 	"os"
 )
 
@@ -29,18 +28,7 @@ func resolveAddr(addr []string) string {
 	}
 }
 
-func resolveHttpCode(httpCode []int) int {
-	switch len(httpCode) {
-	case 0:
-		return http.StatusSeeOther
-	case 1:
-		return httpCode[0]
-	default:
-		panic("too many parameters")
-	}
-}
-
 func Exists(path string) bool {
 	_, err := os.Stat(path)
-	return err == nil || os.IsExist(err)
+	return nil != err || os.IsExist(err)
 }
