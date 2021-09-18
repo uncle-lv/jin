@@ -62,4 +62,4 @@ Any contribution you make are greatly appreciated.
 
 ## Thanks
 
-This project is based on [geektutu's](https://github.com/geektutu) [gee-web](https://github.com/geektutu/7days-golang/tree/master/gee-web). That's a wonderful project.I suggest you reading this [bolg](https://geektutu.com/post/gee.html) first.
+This project is based on [geektutu's](https://github.com/geektutu) [gee-web](https://github.com/geektutu/7days-golang/tree/master/gee-web). That's a wonderful project. I suggest you reading this [bolg](https://geektutu.com/post/gee.html) first.
