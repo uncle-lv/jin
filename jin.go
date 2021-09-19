@@ -27,7 +27,7 @@ type IRoutes interface {
 
 type (
 	RouterGroup struct {
-		prefix      string       // The prefix of the route
+		prefix      string       // the prefix of the route
 		parent      *RouterGroup // support router group nesting
 		engine      *Engine      // all the groups share one engine instance
 		middlewares []HandlerFunc
@@ -57,7 +57,7 @@ func Default() *Engine {
 	return engine
 }
 
-// create a new group
+// Create a new group
 func (group *RouterGroup) Group(prefix string) *RouterGroup {
 	engine := group.engine
 	newGroup := &RouterGroup{

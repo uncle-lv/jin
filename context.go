@@ -23,7 +23,10 @@ type Context struct {
 	handlers   []HandlerFunc
 	index      int
 	engine     *Engine
-	sameSite   http.SameSite
+
+	// http.SameSite allows a server to define a cookie attribute making it impossible
+	// for the browser to send this cookie along with cross-site requests.
+	sameSite http.SameSite
 }
 
 func newContext(w http.ResponseWriter, req *http.Request) *Context {
