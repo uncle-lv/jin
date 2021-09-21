@@ -46,11 +46,15 @@ $ git checkout step1-a-simple-framework
 
 ### Class Diagram
 
-![class diagram](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/class_diagram.4nq0xbzu2cu0.svg)
+<div style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/class_diagram.4nq0xbzu2cu0.svg" alt="class diagram"/></div>
+
+
 
 ### Request-handling process
 
-![request-handing process](https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/request-handling_process.6uv2xuz3ti00.svg)
+<div style="text-align:center"><img src="https://cdn.jsdelivr.net/gh/uncle-lv/PicX-image-hosting@main/jin/request-handling_process.6uv2xuz3ti00.svg" alt="class diagram"/></div>
+
+
 
 ## Contributions
 
